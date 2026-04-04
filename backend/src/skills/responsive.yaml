@@ -1,0 +1,69 @@
+id: skill-responsive
+name: "Mobile-first Responsive"
+description: "375px base design \u2014 fluid typography, 44px touch targets, correct breakpoint strategy"
+category: constraints
+scope: global
+is_active: true
+sort_order: 7
+instructions: |
+  Design mobile-first. Base styles target 375px. Scale up with Tailwind breakpoints.
+  
+  BREAKPOINTS:
+    Base (0px):   mobile portrait - single column, large targets
+    sm: (640px):  large mobile / small tablet
+    md: (768px):  tablet - two-column layouts unlock
+    lg: (1024px): laptop - full desktop layout
+    xl: (1280px): wide desktop
+  
+  LAYOUT PATTERNS:
+    Mobile:  flex-col, w-full, grid-cols-1
+    Tablet:  grid-cols-2, side-by-side cards
+    Desktop: grid-cols-3 lg:grid-cols-4, sidebar + main
+  
+  FLUID TYPOGRAPHY:
+    text-sm   sm:text-base           (body)
+    text-2xl  sm:text-3xl  lg:text-4xl  (h2)
+    text-3xl  sm:text-4xl  lg:text-6xl  (h1/hero)
+  
+  TOUCH TARGETS (critical - WCAG 2.5.5):
+  - Minimum 44x44px for all tappable elements
+  - Buttons: min-h-[44px] or py-3
+  - Form inputs: h-11 or h-12
+  
+  SPACING:
+    px-4 md:px-6 lg:px-8     (horizontal)
+    py-12 md:py-16 lg:py-24  (sections)
+    gap-4 md:gap-6 lg:gap-8  (grids)
+  
+  NAVIGATION:
+    Mobile:  hamburger to overlay/bottom sheet (md:hidden)
+    Desktop: full nav (hidden md:flex)
+  
+  IMAGES: w-full h-auto, aspect-video with object-cover, loading="lazy"
+  
+  SAFE AREAS: pb-[env(safe-area-inset-bottom)] on fixed bottom bars
+  
+  AVOID:
+  - Fixed pixel widths on containers
+  - Hover-only interactions
+  - Horizontal overflow (overflow-x-hidden on root)
+examples: |
+  <!-- Responsive card grid -->
+  <div class="px-4 md:px-6 lg:px-8 py-12 md:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      {cards.map(card => (
+        <article class="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+          <img src={card.img} alt={card.title}
+               class="w-full aspect-video object-cover rounded-lg mb-4" loading="lazy"/>
+          <h3 class="font-semibold text-slate-900 text-base md:text-lg">{card.title}</h3>
+          <p class="mt-1 text-sm text-slate-500 leading-relaxed line-clamp-2">{card.desc}</p>
+          <button class="mt-4 w-full min-h-[44px] bg-indigo-600 text-white rounded-lg
+                         font-medium text-sm hover:bg-indigo-700 transition-colors">
+            Learn more
+          </button>
+        </article>
+      ))}
+    </div>
+  </div>
+parameters: []
+param_values: {}

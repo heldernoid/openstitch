@@ -1,0 +1,93 @@
+id: skill-saas-landing-page
+name: "SaaS Landing Page"
+description: "SaaS marketing page \u2014 hero, features grid, pricing table, testimonials, CTA sections"
+category: layout
+scope: global
+is_active: false
+sort_order: 24
+instructions: |
+  REQUIRED SECTIONS (in order):
+  1. Navbar (logo + nav links + CTA button)
+  2. Hero (headline, subtext, dual CTA, social proof/screenshot)
+  3. Logos bar (trusted by / used by)
+  4. Features section (3 or 6 feature cards with icons)
+  5. Highlight section (alternating image + text rows)
+  6. Pricing section (3 tiers: Free / Pro / Enterprise)
+  7. Testimonials (3 cards with avatar + quote + name)
+  8. Final CTA banner
+  9. Footer
+  
+  HERO SECTION:
+    <section style="text-align:center; padding:80px 24px 60px;">
+      <div style="display:inline-block; background:#eff6ff; color:#3b82f6; font-size:12px; font-weight:600; padding:4px 14px; border-radius:20px; margin-bottom:20px; border:1px solid #bfdbfe;">
+        🎉 New: Feature announcement
+      </div>
+      <h1 style="font-size:clamp(2.5rem,5vw,4rem); font-weight:800; line-height:1.1; letter-spacing:-0.03em; color:#0f172a; max-width:14ch; margin:0 auto 20px;">
+        The Platform That Does <span style="color:#3b82f6;">Everything</span>
+      </h1>
+      <p style="font-size:1.2rem; color:#64748b; max-width:52ch; margin:0 auto 36px; line-height:1.7;">
+        Short, punchy subheadline that explains the core value proposition in one or two sentences.
+      </p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="#" style="background:#3b82f6; color:#fff; padding:14px 28px; border-radius:8px; font-weight:700; font-size:15px; text-decoration:none;">Get started free</a>
+        <a href="#" style="background:#fff; color:#0f172a; padding:14px 28px; border-radius:8px; font-weight:600; font-size:15px; text-decoration:none; border:2px solid #e2e8f0;">Watch demo →</a>
+      </div>
+      <p style="font-size:13px; color:#94a3b8; margin-top:16px;">No credit card required · Free 14-day trial</p>
+    </section>
+  
+  LOGO BAR:
+    <section style="padding:32px 24px; border-top:1px solid #f1f5f9; border-bottom:1px solid #f1f5f9;">
+      <p style="text-align:center; font-size:13px; text-transform:uppercase; letter-spacing:.1em; color:#94a3b8; font-weight:500; margin-bottom:24px;">Trusted by teams at</p>
+      <div style="display:flex; justify-content:center; align-items:center; gap:48px; flex-wrap:wrap; opacity:0.4; filter:grayscale(1);">
+        <!-- company name spans in gray -->
+        <span style="font-size:20px; font-weight:800; color:#334155;">Company</span>
+      </div>
+    </section>
+  
+  FEATURES GRID (6 cards):
+    <section style="padding:80px 24px;">
+      <h2 style="text-align:center; font-size:2.25rem; font-weight:800; color:#0f172a; margin-bottom:16px;">Everything you need</h2>
+      <p style="text-align:center; color:#64748b; max-width:48ch; margin:0 auto 48px;">...</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; max-width:1000px; margin:0 auto;">
+        <div style="padding:28px; border:1px solid #e2e8f0; border-radius:12px; background:#fff;">
+          <div style="width:44px;height:44px;background:#eff6ff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;">⚡</div>
+          <h3 style="font-size:1rem; font-weight:700; color:#0f172a; margin-bottom:8px;">Feature Title</h3>
+          <p style="font-size:14px; color:#64748b; line-height:1.6;">Feature description.</p>
+        </div>
+      </div>
+    </section>
+  
+  PRICING SECTION (3 tiers):
+    Middle tier = highlighted (most popular)
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:900px; margin:0 auto;">
+      <!-- each tier: -->
+      <div style="border:2px solid #3b82f6; border-radius:16px; padding:32px; position:relative; background:#fff;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#3b82f6;color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;">MOST POPULAR</div>
+        <p style="font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#3b82f6;">Pro</p>
+        <div style="font-size:2.5rem; font-weight:800; color:#0f172a; margin:16px 0 4px;">$29<span style="font-size:1rem;color:#64748b;font-weight:400;">/mo</span></div>
+        <ul style="list-style:none; padding:0; margin:24px 0; display:flex; flex-direction:column; gap:12px;">
+          <li style="display:flex; gap:10px; font-size:14px; color:#334155;"><span style="color:#22c55e;">✓</span> Feature item</li>
+        </ul>
+        <a href="#" style="display:block;text-align:center;background:#3b82f6;color:#fff;padding:12px;border-radius:8px;font-weight:700;text-decoration:none;">Get started</a>
+      </div>
+    </div>
+  
+  TESTIMONIALS (3 cards):
+    <div style="background:#0f172a; border-radius:16px; padding:32px; max-width:360px;">
+      <p style="color:#e2e8f0; font-size:15px; line-height:1.7; margin-bottom:20px;">"Quote goes here."</p>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#475569;overflow:hidden;"></div>
+        <div><p style="color:#f8fafc; font-weight:600; font-size:14px;">Name</p><p style="color:#94a3b8; font-size:12px;">Title, Company</p></div>
+      </div>
+    </div>
+  
+  RULES:
+  - Hero headline must be large (clamp-based responsive), bold, with a colored keyword
+  - Always include free trial note under CTA buttons
+  - Middle pricing tier must be visually highlighted
+  - Logos bar must be grayscale/low-opacity (don't imply endorsement)
+  - End every section with breathing room (80px+ padding)
+examples: |
+  []
+parameters: []
+param_values: {}

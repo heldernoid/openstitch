@@ -1,0 +1,118 @@
+id: skill-data-visualization
+name: "Data Visualization"
+description: "Charts and graphs via Chart.js CDN \u2014 bar, line, pie, doughnut charts with stat cards"
+category: components
+scope: global
+is_active: false
+sort_order: 28
+instructions: |
+  Load in <head>:
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  
+  STAT CARDS (always include alongside charts):
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">
+      <div style="background:#fff;border-radius:12px;padding:20px;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+        <p style="font-size:12px;font-weight:500;color:#64748b;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;">Revenue</p>
+        <p style="font-size:1.875rem;font-weight:800;color:#0f172a;line-height:1;">$48,295</p>
+        <p style="font-size:12px;color:#22c55e;margin-top:6px;font-weight:500;">↑ 18.2% vs last month</p>
+      </div>
+    </div>
+  
+  LINE CHART:
+    <canvas id="lineChart" style="max-height:300px;"></canvas>
+    <script>
+      new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul'],
+          datasets: [{
+            label: 'Revenue',
+            data: [12000, 19000, 15000, 25000, 22000, 30000, 28000],
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59,130,246,0.08)',
+            borderWidth: 2.5,
+            pointRadius: 4,
+            pointBackgroundColor: '#3b82f6',
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: { size: 11 } } },
+            x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
+          }
+        }
+      });
+    </script>
+  
+  BAR CHART:
+    <canvas id="barChart" style="max-height:300px;"></canvas>
+    <script>
+      new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          datasets: [{
+            label: 'Orders',
+            data: [65, 80, 75, 90, 110, 95, 70],
+            backgroundColor: 'rgba(59,130,246,0.85)',
+            borderRadius: 6,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { grid: { color: '#f1f5f9' }, ticks: { color: '#94a3b8', font: { size: 11 } } },
+            x: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 11 } } }
+          }
+        }
+      });
+    </script>
+  
+  DOUGHNUT / PIE:
+    <canvas id="donutChart" style="max-height:260px;"></canvas>
+    <script>
+      new Chart(document.getElementById('donutChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Direct','Organic','Referral','Social'],
+          datasets: [{
+            data: [35, 28, 22, 15],
+            backgroundColor: ['#3b82f6','#22c55e','#f59e0b','#ec4899'],
+            borderWidth: 0,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          cutout: '72%',
+          plugins: {
+            legend: { position: 'right', labels: { color: '#374151', font: { size: 12 }, padding: 16 } }
+          }
+        }
+      });
+    </script>
+  
+  MULTI-SERIES LINE (comparison):
+    datasets: [
+      { label: 'This Year', data: [...], borderColor: '#3b82f6', backgroundColor: 'transparent', borderWidth: 2.5, tension: 0.4 },
+      { label: 'Last Year', data: [...], borderColor: '#e2e8f0', backgroundColor: 'transparent', borderWidth: 2, tension: 0.4, borderDash: [5,5] }
+    ]
+  
+  RULES:
+  - Always wrap each chart in a white card: background:#fff; border-radius:12px; padding:20px; border:1px solid #e2e8f0;
+  - Include a chart title above each canvas: font-size:15px; font-weight:700; color:#0f172a; margin-bottom:16px;
+  - Chart.js config: responsive:true, maintainAspectRatio:true
+  - Use borderRadius on bar chart bars for modern look
+  - Stat cards always include: label, large value, trend indicator (↑/↓ percentage in green/red)
+  - For time-series data: always use 7+ data points (not 2-3)
+  - Color palette: primary blue #3b82f6, success green #22c55e, warning amber #f59e0b, pink #ec4899
+examples: |
+  []
+parameters: []
+param_values: {}

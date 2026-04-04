@@ -1,0 +1,45 @@
+<svg width="360" height="80" viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" fill="none">
+
+  <!-- Icon (slightly tighter + aligned with text height) -->
+  <g transform="translate(0,8)">
+    
+    <!-- UI Squares -->
+    <rect x="8" y="14" width="10" height="10" rx="2.5" fill="#6C8CFF"/>
+    <rect x="22" y="14" width="10" height="10" rx="2.5" fill="#00C2A8"/>
+    <rect x="36" y="14" width="10" height="10" rx="2.5" fill="#F4B942"/>
+
+    <rect x="8" y="28" width="10" height="10" rx="2.5" fill="#FF6B6B"/>
+    <rect x="22" y="28" width="10" height="10" rx="2.5" fill="#7ED957"/>
+    <rect x="36" y="28" width="10" height="10" rx="2.5" fill="#C77DFF"/>
+
+    <!-- Thread -->
+    <path d="M14 46
+             C 28 56, 50 12, 62 22
+             S 40 58, 26 40
+             S 12 30, 20 22"
+          stroke="#D97706"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-dasharray="3.5 5"
+          fill="none"/>
+
+    <!-- Needle -->
+    <g transform="rotate(-28 62 22)">
+      <path d="M42 34 
+               L64 10 
+               Q66 8 68 10 
+               L46 36 
+               Q44 38 42 34 Z"
+            fill="#2B2B2B"/>
+      <ellipse cx="64" cy="12" rx="2.2" ry="1.4" fill="white"/>
+      <ellipse cx="64" cy="12" rx="1" ry="0.6" fill="#2B2B2B"/>
+    </g>
+
+  </g>
+
+  <!-- Unified Wordmark -->
+  <text x="80" y="52" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600">
+    <tspan fill="#111111">Open</tspan><tspan fill="#D97706">Stitch</tspan>
+  </text>
+
+</svg>

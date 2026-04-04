@@ -1,0 +1,64 @@
+id: skill-a11y
+name: "WCAG 2.1 Accessibility"
+description: "Full AA compliance \u2014 aria patterns, contrast, keyboard navigation, semantic HTML"
+category: constraints
+scope: global
+is_active: true
+sort_order: 3
+instructions: |
+  Ensure WCAG 2.1 Level AA compliance throughout.
+  
+  SEMANTIC HTML:
+  - Use <nav>, <main>, <header>, <footer>, <aside>, <section> landmarks
+  - Heading hierarchy: one <h1> per page, logical h2→h3→h4 - never skip levels
+  - Use <button> for actions, <a href> for navigation - never <div onClick>
+  - Lists: <ul>/<ol>/<li> for any repeated items
+  
+  ARIA:
+  - Icon-only buttons: always add aria-label="Descriptive action"
+  - aria-describedby for fields with helper text
+  - aria-invalid="true" + aria-describedby on error fields
+  - aria-live="polite" on regions that update dynamically (toasts, counters)
+  - aria-expanded on toggles (accordion, dropdown)
+  - role="dialog" + aria-labelledby + aria-modal="true" on modals
+  - Skip link: <a href="#main-content" class="sr-only focus:not-sr-only">Skip to content</a>
+  
+  COLOUR CONTRAST (minimum ratios):
+  - Normal text (< 18px / non-bold < 14px): 4.5:1
+  - Large text (>= 18px / bold >= 14px): 3:1
+  - UI components and icons: 3:1
+  - Never convey information with colour alone
+  
+  KEYBOARD NAVIGATION:
+  - All interactive elements keyboard-reachable and operable
+  - Visible focus: focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500
+  - Logical tab order; trap focus inside open modals
+  - Escape closes modals, dropdowns, side panels
+  
+  FORMS:
+  - Every input has a visible <label> (or aria-label as fallback)
+  - Required fields: required attribute + visual indicator
+  - Error messages: descriptive, linked via aria-describedby
+examples: |
+  <!-- Accessible icon button -->
+  <button aria-label="Close dialog"
+    class="p-2 rounded-md text-slate-500 hover:text-slate-700
+           focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none">
+    <svg aria-hidden="true" class="w-5 h-5" .../>
+  </button>
+  
+  <!-- Accessible form field with error -->
+  <div class="flex flex-col gap-1.5">
+    <label for="email" class="text-sm font-medium text-slate-700">
+      Email <span aria-hidden="true" class="text-red-500">*</span>
+    </label>
+    <input id="email" type="email" required
+      aria-describedby="email-error" aria-invalid="true"
+      class="px-3 py-2 border border-red-400 rounded-md
+             focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"/>
+    <p id="email-error" role="alert" class="text-sm text-red-600">
+      Enter a valid email address
+    </p>
+  </div>
+parameters: []
+param_values: {}

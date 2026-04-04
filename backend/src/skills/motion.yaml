@@ -1,0 +1,70 @@
+id: skill-motion
+name: "Motion & Animation"
+description: "Purposeful transitions, micro-interactions, keyframe animations, reduced-motion support"
+category: style
+scope: global
+is_active: false
+sort_order: 6
+instructions: |
+  Add purposeful motion that guides attention and provides feedback.
+  
+  TIMING:
+  - Hover/focus: duration-150 ease-out (fast, snappy)
+  - State changes: duration-200 ease-in-out
+  - Page/section transitions: duration-300 ease-in-out
+  - Never animate layout properties directly - use transform + opacity
+  
+  HOVER MICRO-INTERACTIONS:
+    Buttons: hover:-translate-y-0.5 hover:shadow-md transition-all duration-150
+    Cards:   hover:-translate-y-1 hover:shadow-xl transition-all duration-200
+    Links:   hover:text-primary transition-colors duration-150
+    Icons:   hover:scale-110 transition-transform duration-150
+  
+  ENTER ANIMATIONS (CSS keyframes in <style> tag):
+    Fade in:  opacity 0 to 1, translateY(8px) to 0, 250ms ease-out
+    Slide in: translateX(-16px) to 0, opacity 0 to 1, 200ms ease-out
+    Scale up: scale(0.95) to 1, opacity 0 to 1, 200ms ease-out
+  
+  LOADING STATES:
+    Skeleton: animate-pulse bg-slate-200 dark:bg-slate-700 rounded
+    Spinner:  animate-spin border-2 border-t-primary rounded-full
+    Dots:     three dots, animation-delay staggered 150ms each
+  
+  STAGGER LISTS - animate items in sequence:
+    style={{ animationDelay: `${index * 60}ms` }}
+  
+  REDUCED MOTION - always respect:
+    motion-reduce:transition-none motion-reduce:animate-none
+    Or @media (prefers-reduced-motion: reduce) { * { animation: none; transition: none; } }
+  
+  AVOID:
+  - Animating all elements simultaneously
+  - Infinite loops on content (only loading indicators)
+  - Linear easing for UI feedback
+examples: |
+  <style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  </style>
+  
+  {items.map((item, i) => (
+    <div key={item.id}
+      style={{ animation: "fadeInUp 0.25s ease-out forwards",
+               animationDelay: `${i * 60}ms`, opacity: 0 }}
+      class="bg-white rounded-xl border border-slate-200 p-4
+             hover:-translate-y-1 hover:shadow-lg transition-all duration-200
+             motion-reduce:translate-y-0 motion-reduce:transition-none">
+      {item.title}
+    </div>
+  ))}
+  
+  <!-- Skeleton loader -->
+  <div class="animate-pulse space-y-3">
+    <div class="h-4 bg-slate-200 rounded w-3/4"></div>
+    <div class="h-4 bg-slate-200 rounded w-1/2"></div>
+    <div class="h-32 bg-slate-200 rounded-xl"></div>
+  </div>
+parameters: []
+param_values: {}

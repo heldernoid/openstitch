@@ -1,0 +1,54 @@
+id: skill-nodeps
+name: "No External Dependencies"
+description: "Self-contained output \u2014 inline SVG icons, CSS-only patterns, no CDN links or external images"
+category: constraints
+scope: global
+is_active: false
+sort_order: 8
+instructions: |
+  Produce fully self-contained code with zero external runtime dependencies.
+  
+  ICONS - inline SVG only:
+  - Never import from libraries (heroicons, lucide, font-awesome, etc.)
+  - Never use icon fonts
+  - Embed SVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+  - Common paths:
+    Close:   <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    Arrow:   <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    Search:  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    User:    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+    Menu:    three <line> elements at y=6, y=12, y=18
+  
+  IMAGES - never use external URLs:
+  - Decorative: <div class="w-full aspect-video bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg"/>
+  - Avatars: initials in colored circle
+    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold text-sm">AB</div>
+  - Hero: gradient div (from-indigo-50 via-white to-purple-50)
+  
+  FONTS: system font stack - ui-sans-serif, system-ui, -apple-system, sans-serif
+  NEVER link Google Fonts CDN
+  
+  CSS: Tailwind utilities only; inline <style> for @keyframes is acceptable
+  No external stylesheet links
+examples: |
+  <!-- Self-contained user card -->
+  <div class="flex items-center gap-3 p-4 bg-white rounded-xl border border-slate-200">
+    <!-- Initials avatar -->
+    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700
+                flex items-center justify-center font-semibold text-sm flex-shrink-0">JD</div>
+    <div class="flex-1 min-w-0">
+      <p class="font-medium text-slate-900 truncate">Jane Doe</p>
+      <p class="text-sm text-slate-500 truncate">jane@example.com</p>
+    </div>
+    <!-- Inline SVG icon button -->
+    <button class="p-1.5 text-slate-400 hover:text-slate-700 rounded-md hover:bg-slate-100"
+            aria-label="More options">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/>
+        <circle cx="12" cy="19" r="1.5"/>
+      </svg>
+    </button>
+  </div>
+parameters: []
+param_values: {}

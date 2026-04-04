@@ -1,0 +1,109 @@
+id: skill-placeholder-images
+name: "Placeholder Images"
+description: "Use picsum.photos and loremflickr for realistic placeholder photos — never leave empty divs or broken src attributes"
+category: constraints
+scope: global
+is_active: true
+sort_order: 12
+instructions: |
+  Always use real placeholder image URLs. Never use placeholder.com, leave src empty, or use colored divs when a photo is called for.
+
+  PRIMARY SOURCE — picsum.photos (fast, reliable, no rate limits):
+    Random:        https://picsum.photos/[width]/[height]
+    By ID:         https://picsum.photos/id/[ID]/[width]/[height]
+    Seed (stable): https://picsum.photos/seed/[word]/[width]/[height]
+
+  VERIFIED IMAGE IDs BY CATEGORY (use these for precision):
+    Nature/landscape:  107, 412, 413, 441, 447, 482, 509, 548, 675, 693, 702, 877, 923, 929, 1043, 1051, 1074, 1080
+    Forest/mountains:  10, 15, 28, 29, 37, 106, 117, 426, 434, 558, 566, 571, 572, 648, 814, 976, 980
+    Architecture:      164, 165, 169, 175, 177, 206, 258, 267, 271, 274, 280, 508, 510, 520, 739, 1011
+    City/urban:        160, 181, 268, 275, 276, 318, 319, 325, 328, 338, 341, 342, 378, 379, 380, 629, 677, 912
+    People/portrait:   64, 65, 91, 365, 430, 431, 433, 488, 491, 493, 535, 577, 695, 822, 856, 874, 965, 1009, 1010
+    Gadgets/workspace: 403, 506, 507, 508, 511, 512, 513, 514, 515, 526, 527, 528, 529, 530, 531, 532, 533, 534, 668
+    Technology/misc:   0, 1, 2, 3, 4, 96, 119, 160, 180
+    Food:              292, 1083
+    Abstract/texture:  49, 55, 57, 62, 116, 131, 137, 145
+
+  NOTE: picsum has NO animals and very little food. Use LoremFlickr for those.
+
+  SECONDARY SOURCE — loremflickr.com (use for animals, food/groceries, and any keyword-specific need):
+    Format: https://loremflickr.com/[width]/[height]/[keyword]
+    Animals:    https://loremflickr.com/800/600/animal
+    Dogs:       https://loremflickr.com/800/600/dog
+    Cats:       https://loremflickr.com/800/600/cat
+    Birds:      https://loremflickr.com/800/600/bird
+    Food:       https://loremflickr.com/800/600/food
+    Groceries:  https://loremflickr.com/800/600/grocery
+    Restaurant: https://loremflickr.com/800/600/restaurant
+    Gadgets:    https://loremflickr.com/800/600/gadget
+    Any topic:  https://loremflickr.com/[width]/[height]/[keyword]
+    Multiple keywords (comma-separated): https://loremflickr.com/800/600/cat,kitten
+
+  PICSUM MODIFIERS:
+    Grayscale: ?grayscale           → https://picsum.photos/id/15/800/600?grayscale
+    Blur:      ?blur=2              → https://picsum.photos/id/15/800/600?blur=2
+    Both:      ?grayscale&blur=1
+
+  COMMON SIZES:
+    Hero (16:9):    1920/1080 or 1600/900
+    Card image:     600/400 or 800/500
+    Square avatar:  200/200 or 400/400
+    Portrait (4:5): 600/750
+    Wide banner:    1200/400
+
+  DECISION RULE:
+    - People, nature, architecture, city, gadgets, abstract → picsum by ID
+    - Animals, food, groceries, or any specific subject picsum lacks → loremflickr with keyword
+    - Multiple cards of the same category → use different IDs or different seed words so images vary
+
+  ALWAYS set meaningful alt text describing the image content.
+  ALWAYS pair with object-cover on the <img> tag inside a sized container.
+
+  NEVER use:
+    - https://placeholder.com or https://placehold.co
+    - Empty src="" attributes
+    - data:image/... base64 for photos
+    - Solid color divs in place of actual photos (only acceptable for avatars/icons)
+examples: |
+  <!-- Hero landscape with picsum -->
+  <div class="relative h-screen overflow-hidden">
+    <img src="https://picsum.photos/id/702/1920/1080"
+         alt="Beach with mountains in the background"
+         class="w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-transparent"></div>
+  </div>
+
+  <!-- Animal shelter card — loremflickr for dogs -->
+  <div class="rounded-xl overflow-hidden">
+    <img src="https://loremflickr.com/600/400/dog"
+         alt="Friendly dog available for adoption"
+         class="w-full h-48 object-cover">
+  </div>
+
+  <!-- Food blog card — loremflickr for food -->
+  <div class="rounded-xl overflow-hidden">
+    <img src="https://loremflickr.com/600/400/food"
+         alt="Fresh prepared meal"
+         class="w-full h-48 object-cover">
+  </div>
+
+  <!-- Gadget card — Jeff Sheldon block -->
+  <div class="rounded-xl overflow-hidden">
+    <img src="https://picsum.photos/id/526/600/400"
+         alt="Minimal desk workspace with notebook and pen"
+         class="w-full h-48 object-cover">
+  </div>
+
+  <!-- Portrait avatar — grayscale -->
+  <img src="https://picsum.photos/id/874/200/200?grayscale"
+       alt="Team member portrait"
+       class="w-16 h-16 rounded-full object-cover">
+
+  <!-- Card grid with varied picsum seeds -->
+  <div class="grid grid-cols-3 gap-6">
+    <img src="https://picsum.photos/seed/alpha/600/400" alt="..." class="w-full h-48 object-cover rounded-xl">
+    <img src="https://picsum.photos/seed/beta/600/400"  alt="..." class="w-full h-48 object-cover rounded-xl">
+    <img src="https://picsum.photos/seed/gamma/600/400" alt="..." class="w-full h-48 object-cover rounded-xl">
+  </div>
+parameters: []
+param_values: {}

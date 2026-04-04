@@ -1,0 +1,64 @@
+# Cursor Rules — OpenStitch
+
+## Primary Reference
+
+All guidelines for AI-assisted contributions are in [`.claude/CLAUDE.md`](../.claude/CLAUDE.md). Read it before making changes. It covers:
+
+- Project architecture and key directories
+- Theming rules (CSS variables — mandatory)
+- TypeScript and linting requirements
+- Docker rebuild workflow
+- Anti-patterns to avoid
+- Quality checklist
+
+---
+
+## Cursor-Specific Context
+
+### Project Stack
+
+- **Frontend**: React 18 + Vite + TypeScript + Tailwind (Docker, no hot reload)
+- **Backend**: FastAPI + SQLite + WebSocket streaming
+- **Canvas**: @xyflow/react
+- **State**: Zustand stores
+- **AI**: Ollama local + cloud providers
+
+### Key Directories
+
+```
+frontend/src/
+  canvas/        React Flow canvas and screen nodes
+  editor/        WorkspacePanel (file tree + CodeMirror)
+  generation/    PromptPanel, streaming, MultiScreenProgress
+  preview/       ScreenPreview, PlayModeRunner, sandbox-utils
+  store/         Zustand — canvas, project, generation, settings
+  lib/           API client, flow-resolver, frameworks
+
+backend/src/
+  routers/       FastAPI routes
+  prompts/       LLM prompt templates
+  db/            SQLite layer
+  skills/        skill YAML files — one per skill, loaded on startup
+```
+
+### Mandatory Rules
+
+- Use `var(--bg-surface)`, `var(--text)`, `var(--border)`, `var(--primary)` — never hardcode colors
+- Run `npx tsc --noEmit` before every commit
+- Run `docker compose build frontend && docker compose up -d frontend` to test changes
+- No `as any` in TypeScript
+- Clean AI-generated noise before committing
+
+### Quality Checklist
+
+- [ ] `cd frontend && npx tsc --noEmit` passes
+- [ ] `cd frontend && pnpm eslint src --ext ts,tsx` passes
+- [ ] Backend: `uv run mypy src` + `uv run ruff check src` + `uv run pytest` pass (if changed)
+- [ ] Docker rebuild tested
+- [ ] No hardcoded colors
+- [ ] No AI boilerplate comments
+- [ ] Single focused scope
+
+---
+
+See [`.claude/CLAUDE.md`](../.claude/CLAUDE.md) for full details.

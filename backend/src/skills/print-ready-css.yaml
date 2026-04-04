@@ -1,0 +1,100 @@
+id: skill-print-ready-css
+name: "Print-ready CSS"
+description: "@media print optimized \u2014 clean ink layout, hidden nav/sidebar, page breaks"
+category: layout
+scope: global
+is_active: false
+sort_order: 30
+instructions: |
+  ALWAYS include this <style> block:
+  
+    <style>
+      /* Screen defaults */
+      body { font-family: 'Georgia', serif; margin: 0; color: #000; background: #fff; }
+      .no-print { /* navigation, sidebar, buttons, ads */ }
+      .page-break { page-break-after: always; break-after: page; }
+      .avoid-break { page-break-inside: avoid; break-inside: avoid; }
+  
+      @media print {
+        /* Hide everything that shouldn't print */
+        nav, header, footer, aside, .no-print, button, .sidebar,
+        [role="navigation"], [role="banner"], [role="complementary"] {
+          display: none !important;
+        }
+  
+        /* Reset layout for paper */
+        body {
+          font-size: 11pt;
+          line-height: 1.5;
+          color: #000 !important;
+          background: #fff !important;
+          margin: 0;
+          padding: 0;
+        }
+  
+        /* Content fills the page */
+        main, .content, article {
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          float: none !important;
+        }
+  
+        /* Remove shadows, backgrounds, borders */
+        * {
+          box-shadow: none !important;
+          text-shadow: none !important;
+          background: transparent !important;
+          border-color: #ccc !important;
+        }
+  
+        /* Preserve black text */
+        h1, h2, h3, h4, p, td, th, li { color: #000 !important; }
+  
+        /* Show href for links */
+        a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #555; }
+        a[href^="#"]::after, a[href^="javascript:"]::after { content: ""; }
+  
+        /* Page breaks */
+        h1, h2, h3 { page-break-after: avoid; break-after: avoid; }
+        table, figure, img { page-break-inside: avoid; break-inside: avoid; }
+        p { orphans: 3; widows: 3; }
+  
+        /* Images: max width, no float */
+        img { max-width: 100% !important; height: auto !important; display: block; }
+  
+        /* Tables */
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #999; padding: 6pt 8pt; text-align: left; }
+        thead { display: table-header-group; } /* repeat header on each page */
+      }
+    </style>
+  
+  PRINT HEADER (visible on print, hidden on screen):
+    <div class="print-only" style="display:none;">
+      @media print { .print-only { display: block !important; } }
+      <div style="border-bottom:2px solid #000;padding-bottom:12pt;margin-bottom:16pt;">
+        <h1 style="font-size:20pt;margin:0;">Document Title</h1>
+        <p style="font-size:9pt;color:#555;margin:4pt 0 0;">Printed: <span id="printDate"></span></p>
+        <script>document.getElementById('printDate').textContent = new Date().toLocaleDateString();</script>
+      </div>
+    </div>
+  
+  PRINT BUTTON (screen only, hidden on print):
+    <button class="no-print" onclick="window.print()"
+            style="position:fixed;bottom:24px;right:24px;background:#1a202c;color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+      🖨 Print
+    </button>
+  
+  RULES:
+  - All colors explicitly set to #000 for text, #fff for backgrounds in print media query
+  - Remove ALL box-shadows, gradients, and background colors in print
+  - Tables must have visible 1px borders in print (browsers strip them otherwise)
+  - Use pt not px for print font sizes (11pt body, 14pt h3, 18pt h2, 24pt h1)
+  - Include thead { display: table-header-group } so table headers repeat on every printed page
+  - Add a print button on screen that calls window.print()
+examples: |
+  []
+parameters: []
+param_values: {}

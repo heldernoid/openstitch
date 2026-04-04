@@ -1,0 +1,105 @@
+id: skill-email-safe-html
+name: "Email-safe HTML"
+description: "Table-based email layout \u2014 inline styles, no external fonts, Outlook-safe, 600px width"
+category: layout
+scope: global
+is_active: false
+sort_order: 32
+instructions: |
+  EMAIL HTML IS COMPLETELY DIFFERENT from web HTML. Follow these rules strictly:
+  
+  BOILERPLATE:
+    <!DOCTYPE html>
+    <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+      <meta charset="utf-8"/>
+      <meta name="x-apple-disable-message-reformatting"/>
+      <meta name="viewport" content="width=device-width,initial-scale=1"/>
+      <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no"/>
+      <!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+      <style>
+        /* Outlook font fallback */
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; width: 100%; background: #f4f4f4; }
+        table { border-spacing: 0; }
+        td { padding: 0; }
+        img { border: 0; display: block; }
+        /* Prevent blue links on Apple devices */
+        a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
+      </style>
+    </head>
+    <body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,Helvetica,sans-serif;">
+      <!-- Outer wrapper table (full width) -->
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr><td align="center" style="padding:24px 12px;">
+          <!-- Inner 600px email -->
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:8px;overflow:hidden;">
+            <!-- HEADER -->
+            <!-- BODY SECTIONS -->
+            <!-- FOOTER -->
+          </table>
+        </td></tr>
+      </table>
+    </body>
+    </html>
+  
+  HEADER:
+    <tr><td style="background:#1e293b;padding:24px 32px;text-align:center;">
+      <h1 style="margin:0;color:#ffffff;font-family:Arial,sans-serif;font-size:24px;font-weight:700;">Company Name</h1>
+    </td></tr>
+  
+  HERO SECTION:
+    <tr><td style="padding:40px 32px;text-align:center;">
+      <h2 style="margin:0 0 12px;color:#0f172a;font-family:Arial,sans-serif;font-size:28px;font-weight:700;line-height:1.2;">Email Headline</h2>
+      <p style="margin:0 0 24px;color:#64748b;font-family:Arial,sans-serif;font-size:16px;line-height:1.6;">Supporting text that explains the purpose of this email clearly.</p>
+      <!-- CTA Button (table-based for Outlook) -->
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+        <tr><td style="background:#3b82f6;border-radius:6px;text-align:center;">
+          <a href="#" style="display:block;padding:14px 32px;color:#ffffff;font-family:Arial,sans-serif;font-size:15px;font-weight:700;text-decoration:none;">Click Here</a>
+        </td></tr>
+      </table>
+    </td></tr>
+  
+  DIVIDER:
+    <tr><td style="padding:0 32px;"><div style="height:1px;background:#e2e8f0;"></div></td></tr>
+  
+  2-COLUMN SECTION (use table, not flexbox):
+    <tr><td style="padding:32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr valign="top">
+          <td width="48%" style="padding-right:12px;">
+            <h3 style="margin:0 0 8px;color:#0f172a;font-size:16px;font-weight:700;font-family:Arial,sans-serif;">Feature One</h3>
+            <p style="margin:0;color:#64748b;font-size:14px;line-height:1.6;font-family:Arial,sans-serif;">Description text.</p>
+          </td>
+          <td width="4%"></td>
+          <td width="48%" style="padding-left:12px;">
+            <h3 style="margin:0 0 8px;color:#0f172a;font-size:16px;font-weight:700;font-family:Arial,sans-serif;">Feature Two</h3>
+            <p style="margin:0;color:#64748b;font-size:14px;line-height:1.6;font-family:Arial,sans-serif;">Description text.</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  
+  FOOTER:
+    <tr><td style="background:#f8fafc;padding:24px 32px;text-align:center;border-top:1px solid #e2e8f0;">
+      <p style="margin:0 0 8px;color:#94a3b8;font-family:Arial,sans-serif;font-size:12px;line-height:1.6;">Company Inc., 123 Main St, City, State 12345</p>
+      <p style="margin:0;color:#94a3b8;font-family:Arial,sans-serif;font-size:12px;">
+        <a href="#" style="color:#3b82f6;text-decoration:none;">Unsubscribe</a> · <a href="#" style="color:#3b82f6;text-decoration:none;">Privacy Policy</a>
+      </p>
+    </td></tr>
+  
+  STRICT RULES (email clients are very picky):
+  - ALL styles MUST be inline (no <style> for layout - only reset styles)
+  - Use tables for layout - NO flexbox, NO grid, NO CSS float
+  - No external CSS files or web fonts (use Arial, Helvetica, Georgia, Times as fallbacks)
+  - Images: always set width, height, border=0, display:block, alt text
+  - Max width: 600px for the email table
+  - All links must be absolute URLs (https://)
+  - NO JavaScript
+  - Background images: use bgcolor attribute on <td> as fallback for Outlook
+  - CTA buttons: table-based (not <a> styled as button) for Outlook compatibility
+  - Border-radius: OK in most clients (not Outlook), add it anyway
+examples: |
+  []
+parameters: []
+param_values: {}

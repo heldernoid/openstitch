@@ -1,0 +1,56 @@
+id: skill-cross-screen-consistency
+name: "Cross-screen Consistency"
+description: "Shared navigation, footer, and layout shell must be structurally identical across every screen in the app"
+category: constraints
+scope: global
+is_active: true
+sort_order: 6
+instructions: |
+  Every screen in this multi-screen app is generated independently, but the user will view them
+  side by side or navigate between them. Structural layout elements MUST be consistent across all screens.
+
+  NAVIGATION (header):
+  - Use the same outer wrapper: <header> with sticky top-0, a max-width container, and flex justify-between
+  - Include the same three zones: logo (left), nav links (center/right), optional CTA button (far right)
+  - Same Tailwind classes for the header bar, logo, nav links, and active state
+  - If DESIGN.md specifies a nav pattern, replicate it exactly — do NOT invent a new one
+
+  FOOTER:
+  - Same structure and columns across all screens
+  - If one screen has a footer, all screens must have it
+
+  PAGE LAYOUT SHELL:
+  - Same top-level background color and font on <body>
+  - Consistent section padding rhythm (e.g. py-16 md:py-24) — do not vary per page
+  - Content area width constrained the same way (e.g. max-w-7xl mx-auto px-4 sm:px-6 lg:px-8)
+
+  WHAT IS ALLOWED TO VARY:
+  - The main content area between header and footer (this is the screen's unique content)
+  - Active/current nav link highlight for the current screen
+  - Hero section height and imagery
+
+  RULE: If you are unsure what the nav or shell looked like on other screens, reproduce the pattern
+  from DESIGN.md or use the most conservative, standard interpretation. Never omit the header wrapper
+  or reduce the nav to a bare <nav> tag floating in <body>.
+examples: |
+  <!-- Correct: full header shell on every screen -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="font-bold text-xl tracking-tight">Brand<span class="text-blue-600">.</span></a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="/home" class="text-slate-700 hover:text-blue-600 font-medium text-sm">Home</a>
+          <a href="/about" class="text-slate-700 hover:text-blue-600 font-medium text-sm">About</a>
+          <a href="/contact" class="text-slate-700 hover:text-blue-600 font-medium text-sm">Contact</a>
+        </nav>
+        <a href="#cta" class="hidden md:inline-flex bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Wrong: bare nav floating in body — this breaks layout consistency -->
+  <!-- <nav class="hidden md:flex space-x-8">...</nav> -->
+parameters: []
+param_values: {}

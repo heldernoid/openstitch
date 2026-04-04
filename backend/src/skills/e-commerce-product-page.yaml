@@ -1,0 +1,103 @@
+id: skill-e-commerce-product-page
+name: "E-commerce Product Page"
+description: "Product detail page layout \u2014 image gallery, pricing, CTA, reviews, trust signals"
+category: layout
+scope: global
+is_active: false
+sort_order: 23
+instructions: |
+  REQUIRED SECTIONS for a product page:
+  1. Breadcrumb nav
+  2. Product grid (images left, details right)
+  3. Image gallery with thumbnails
+  4. Product title, rating, review count, price
+  5. Variant selector (size, color)
+  6. Quantity + Add to Cart + Wishlist
+  7. Trust badges (free shipping, returns, secure)
+  8. Description tabs (Description / Specs / Reviews)
+  9. Related products grid
+  
+  LAYOUT STRUCTURE:
+    <div style="max-width:1200px; margin:0 auto; padding:24px;">
+      <!-- breadcrumb -->
+      <nav style="font-size:13px; color:#6b7280; margin-bottom:24px;">
+        <a href="#">Home</a> / <a href="#">Category</a> / <span>Product Name</span>
+      </nav>
+      <!-- main grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+        <!-- LEFT: image gallery -->
+        <!-- RIGHT: product info -->
+      </div>
+    </div>
+  
+  IMAGE GALLERY (left column):
+    <div>
+      <div style="background:#f3f4f6; border-radius:12px; aspect-ratio:1; overflow:hidden; margin-bottom:12px;">
+        <img src="..." style="width:100%; height:100%; object-fit:contain; padding:24px;"/>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
+        <div style="background:#f3f4f6; border-radius:8px; aspect-ratio:1; border:2px solid #3b82f6; overflow:hidden; cursor:pointer;">
+          <img src="..." style="width:100%; height:100%; object-fit:contain; padding:8px;"/>
+        </div>
+      </div>
+    </div>
+  
+  PRODUCT INFO (right column):
+    <div>
+      <span style="font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:#3b82f6;">Brand Name</span>
+      <h1 style="font-size:1.75rem; font-weight:700; color:#111827; margin:8px 0;">Product Title</h1>
+      <!-- Stars -->
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+        <span style="color:#f59e0b;">★★★★½</span>
+        <span style="font-size:14px; color:#6b7280;">4.5 (128 reviews)</span>
+      </div>
+      <!-- Price -->
+      <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:20px;">
+        <span style="font-size:2rem; font-weight:800; color:#111827;">$79.99</span>
+        <span style="font-size:1.1rem; color:#9ca3af; text-decoration:line-through;">$99.99</span>
+        <span style="background:#dcfce7; color:#16a34a; font-size:12px; font-weight:700; padding:2px 8px; border-radius:20px;">20% OFF</span>
+      </div>
+      <!-- Variants -->
+      <div style="margin-bottom:20px;">
+        <p style="font-size:13px; font-weight:600; color:#374151; margin-bottom:8px;">COLOR: <span style="font-weight:400;">Midnight Black</span></p>
+        <div style="display:flex; gap:8px;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#111827;border:3px solid #3b82f6;cursor:pointer;"></div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#f3f4f6;border:2px solid #d1d5db;cursor:pointer;"></div>
+        </div>
+      </div>
+      <!-- Size select -->
+      <div style="margin-bottom:24px;">
+        <p style="font-size:13px; font-weight:600; color:#374151; margin-bottom:8px;">SIZE</p>
+        <div style="display:flex; gap:8px;">
+          <button style="width:44px;height:44px;border:2px solid #3b82f6;border-radius:8px;font-weight:600;background:#eff6ff;color:#3b82f6;cursor:pointer;">M</button>
+          <button style="width:44px;height:44px;border:2px solid #d1d5db;border-radius:8px;font-weight:500;background:#fff;cursor:pointer;">L</button>
+        </div>
+      </div>
+      <!-- Add to cart -->
+      <div style="display:flex;gap:12px;margin-bottom:20px;">
+        <div style="display:flex;border:2px solid #d1d5db;border-radius:8px;overflow:hidden;">
+          <button style="width:44px;height:52px;background:#f9fafb;border:none;font-size:20px;cursor:pointer;">−</button>
+          <span style="width:44px;display:flex;align-items:center;justify-content:center;font-weight:600;">1</span>
+          <button style="width:44px;height:52px;background:#f9fafb;border:none;font-size:20px;cursor:pointer;">+</button>
+        </div>
+        <button style="flex:1;height:52px;background:#3b82f6;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;">Add to Cart</button>
+        <button style="width:52px;height:52px;border:2px solid #d1d5db;border-radius:8px;background:#fff;cursor:pointer;font-size:20px;">♡</button>
+      </div>
+      <!-- Trust badges -->
+      <div style="display:flex;gap:16px;padding:16px;background:#f9fafb;border-radius:8px;">
+        <span style="font-size:12px;color:#6b7280;">🚚 Free shipping</span>
+        <span style="font-size:12px;color:#6b7280;">↩ 30-day returns</span>
+        <span style="font-size:12px;color:#6b7280;">🔒 Secure checkout</span>
+      </div>
+    </div>
+  
+  RULES:
+  - Mobile: stack image/info vertically (grid-template-columns: 1fr on small screens)
+  - At least 4 thumbnail images in the gallery
+  - Price must show original + discounted + % badge when on sale
+  - Add to cart button should be the most visually prominent element
+  - Include at least 3 trust badges
+examples: |
+  []
+parameters: []
+param_values: {}
