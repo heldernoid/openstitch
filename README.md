@@ -19,6 +19,11 @@ Open-source, locally-runnable AI UI design tool. Describe a screen, drop a scree
     <td><img src="./media/replica.gif" alt="Drop a screenshot, get a code replica"/></td>
     <td><img src="./media/draw.gif" alt="Draw a wireframe, get real UI code"/></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://www.youtube.com/watch?v=5jdm2byYw1g">Watch on YouTube</a></td>
+    <td align="center"><a href="https://www.youtube.com/watch?v=PNKGt_W7kRk">Watch on YouTube</a></td>
+    <td align="center"><a href="https://www.youtube.com/watch?v=KFKkkQYgoqo">Watch on YouTube</a></td>
+  </tr>
 </table>
 
 ---
