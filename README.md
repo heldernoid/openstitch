@@ -30,7 +30,7 @@ Open-source, locally-runnable AI UI design tool. Describe a screen, drop a scree
 
 ## Features
 
-- **Text → UI** - describe any screen in natural language, get working HTML, React, or Vue code instantly
+- **Text → UI** - describe any screen in natural language, get working HTML file(s) instantly
 - **Screenshot → UI** - drop a screenshot, generate a code replica with a vision model
 - **Sketch → UI** - draw a rough wireframe, feed it to a vision model, get real code
 - **Generate** - describe a full product, pick a design system (or let AI generate one), get multiple screens in one shot with a shared DESIGN.md
